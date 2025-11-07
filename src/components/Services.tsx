@@ -1,0 +1,136 @@
+import { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import serviceImage from '@/assets/service-bespoke.jpg';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Services = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const services = [
+    {
+      title: 'Bespoke',
+      description:
+        'Tailored exclusively to your vision. Each bespoke piece is a collaboration between your imagination and our mastery, resulting in artifacts that are unmistakably yours.',
+      image: serviceImage,
+    },
+    {
+      title: 'Atelier',
+      description:
+        'Step into our creative sanctuary. The atelier is where concepts take physical form, where sketches become reality through the alchemy of skilled hands and refined materials.',
+      image: serviceImage,
+    },
+    {
+      title: 'Consulting',
+      description:
+        'Strategic design intelligence. We guide brands and collectors through the nuanced landscape of luxury aesthetics, offering insight that transforms vision into tangible excellence.',
+      image: serviceImage,
+    },
+  ];
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        end: () => `+=${services.length * window.innerHeight}`,
+        pin: true,
+        scrub: 1,
+        onUpdate: (self) => {
+          const newIndex = Math.min(
+            Math.floor(self.progress * services.length),
+            services.length - 1
+          );
+          setActiveIndex(newIndex);
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, [services.length]);
+
+  return (
+    <section ref={sectionRef} className="relative h-screen overflow-hidden bg-void-black">
+      {/* Background Images */}
+      <div className="absolute inset-0">
+        {services.map((service, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 transition-opacity duration-1000"
+            style={{ opacity: activeIndex === index ? 1 : 0 }}
+          >
+            <img
+              src={service.image}
+              alt={service.title}
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-void-black/70" />
+          </div>
+        ))}
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 md:px-12">
+        <div className="max-w-4xl text-center">
+          {/* Service Title */}
+          <div className="mb-8 overflow-hidden">
+            {services.map((service, index) => (
+              <h2
+                key={index}
+                className="font-display text-6xl font-bold text-primary transition-all duration-700 md:text-8xl"
+                style={{
+                  transform: `translateY(${(activeIndex - index) * -100}%)`,
+                  opacity: activeIndex === index ? 1 : 0,
+                }}
+              >
+                {service.title}
+              </h2>
+            ))}
+          </div>
+
+          {/* Service Description */}
+          <div className="relative mb-12 min-h-[8rem]">
+            {services.map((service, index) => (
+              <p
+                key={index}
+                className="absolute inset-0 font-body text-lg leading-relaxed text-metallic-aluminum transition-opacity duration-700 md:text-xl"
+                style={{ opacity: activeIndex === index ? 1 : 0 }}
+              >
+                {service.description}
+              </p>
+            ))}
+          </div>
+
+          {/* Progress Indicators */}
+          <div className="flex justify-center gap-3">
+            {services.map((_, index) => (
+              <div
+                key={index}
+                className="h-1 w-16 overflow-hidden bg-muted"
+              >
+                <div
+                  className="h-full bg-gradient-metallic transition-all duration-700"
+                  style={{
+                    width: activeIndex === index ? '100%' : '0%',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Service Counter */}
+          <div className="mt-8 font-body text-sm tracking-widest text-metallic-gunmetal">
+            {String(activeIndex + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
