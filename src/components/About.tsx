@@ -54,15 +54,15 @@ const About = () => {
   const stories = [
     {
       title: 'Heritage',
-      text: 'Born from the intersection of traditional craftsmanship and contemporary design philosophy, we honor the past while forging the future.',
+      text: 'Decades of excellence from Bright Aluminium,("bright aluminium should be in red colour text") carrying forward trusted reliability and quality into a new multi-metal era.',
     },
     {
       title: 'Philosophy',
-      text: 'Every creation is a deliberate act. We believe in the power of restraint, the elegance of precision, and the poetry of negative space.',
+      text: 'Driven by integrity, innovation, and uncompromising quality to empower clients through reliable, transparent metal solutions.',
     },
     {
-      title: 'Craftsmanship',
-      text: 'Our atelier is where time slows down. Each piece undergoes meticulous scrutiny, shaped by hands that understand the language of materials.',
+      title: 'Loham',
+      text: 'Connecting global vendors and service providers with customers, consultants, and developers.',
     },
   ];
 
@@ -112,7 +112,7 @@ const About = () => {
         {/* Closing */}
         <div className="flex h-full min-w-screen items-center justify-center px-12">
           <p className="max-w-md text-center font-display text-2xl italic text-metallic-chrome md:text-3xl">
-            "Design is not what it looks like. Design is how it works."
+            "We don’t just trade metals; we forge relationships built on trust, transparency, and transformative innovation."
           </p>
         </div>
       </div>
