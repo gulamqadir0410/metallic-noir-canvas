@@ -2,22 +2,23 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ChevronDown } from 'lucide-react';
 import heroImage from '@/assets/hero-metallic.jpg';
-import lohamLogo from '@/assets/loham-logo.png';
 
 const Hero = () => {
-  const logoRef = useRef<HTMLImageElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate logo
-      if (logoRef.current) {
-        gsap.from(logoRef.current, {
+      // Animate title letters
+      if (titleRef.current) {
+        const letters = titleRef.current.querySelectorAll('.letter');
+        gsap.from(letters, {
           opacity: 0,
-          scale: 0.8,
-          y: 50,
-          duration: 1.5,
+          y: 100,
+          rotationX: -90,
+          stagger: 0.05,
+          duration: 1.2,
           ease: 'power4.out',
           delay: 0.3,
         });
@@ -29,7 +30,7 @@ const Hero = () => {
           opacity: 0,
           y: 30,
           duration: 1,
-          delay: 1.2,
+          delay: 1.5,
           ease: 'power3.out',
         });
       }
@@ -50,6 +51,14 @@ const Hero = () => {
     return () => ctx.revert();
   }, []);
 
+  const splitText = (text: string) => {
+    return text.split('').map((char, index) => (
+      <span key={index} className="letter inline-block">
+        {char === ' ' ? '\u00A0' : char}
+      </span>
+    ));
+  };
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image with Overlay */}
@@ -64,18 +73,18 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-        <img
-          ref={logoRef}
-          src={lohamLogo}
-          alt="Loham - Architectural Metals Simplified"
-          className="mb-8 w-full max-w-2xl md:max-w-4xl"
-        />
+        <h1
+          ref={titleRef}
+          className="mb-6 font-display text-6xl font-bold tracking-tight text-primary md:text-8xl lg:text-9xl"
+        >
+          {splitText('LOHAM')}
+        </h1>
         
         <p
           ref={subtitleRef}
           className="max-w-2xl font-body text-lg tracking-[0.2em] text-metallic-chrome md:text-xl"
         >
-          ARCHITECTURAL METALS SIMPLIFIED
+          simplifying solutions for architectural metals
         </p>
 
         {/* Scroll Indicator */}
