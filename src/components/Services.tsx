@@ -11,27 +11,21 @@ const Services = () => {
 
   const services = [
     {
-      title: 'Our Edge',
+      title: 'Bespoke',
       description:
-        'Combining technology, trusted partners, and competitive sourcing to simplify and streamline every aspect of architectural procurement and supply.',
+        'Tailored exclusively to your vision. Each bespoke piece is a collaboration between your imagination and our mastery, resulting in artifacts that are unmistakably yours.',
       image: serviceImage,
     },
     {
-      title: 'Quality',
+      title: 'Atelier',
       description:
-        'Backed by certified vendors and precision standards, Loham ensures unmatched quality in every metal, every order, every time.',
+        'Step into our creative sanctuary. The atelier is where concepts take physical form, where sketches become reality through the alchemy of skilled hands and refined materials.',
       image: serviceImage,
     },
     {
-      title: 'Innovation',
+      title: 'Consulting',
       description:
-        'Leveraging technology and market insights, Loham continuously evolves to deliver smarter, faster, and more sustainable metal solutions.',
-      image: serviceImage,
-    },
-    {
-      title: 'Transparency ',
-      description:
-        'Every interaction is built on honesty, visibility, and accountability, ensuring total trust in every deal.',
+        'Strategic design intelligence. We guide brands and collectors through the nuanced landscape of luxury aesthetics, offering insight that transforms vision into tangible excellence.',
       image: serviceImage,
     },
   ];
