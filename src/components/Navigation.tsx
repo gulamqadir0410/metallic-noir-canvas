@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from './NavLink';
 import { Menu, X } from 'lucide-react';
+import lohamLogo from '@/assets/loham-logo.png';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,9 +31,13 @@ const Navigation = () => {
         {/* Logo */}
         <NavLink
           to="/"
-          className="font-display text-2xl font-bold tracking-tight text-primary md:text-3xl"
+          className="flex items-center"
         >
-          ATELIER NOIR
+          <img 
+            src={lohamLogo} 
+            alt="Loham - Architectural Metals Simplified" 
+            className="h-12 w-auto md:h-16 transition-opacity hover:opacity-80"
+          />
         </NavLink>
 
         {/* Desktop Navigation */}
