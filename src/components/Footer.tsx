@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <h3 className="font-display text-2xl font-bold text-primary">
-              ATELIER NOIR
+              LOHAM
             </h3>
           </div>
 
@@ -43,10 +43,10 @@ const Footer = () => {
           {/* Legal */}
           <div className="flex gap-8 font-body text-sm text-metallic-gunmetal">
             <a href="#" className="transition-colors hover:text-metallic-aluminum">
-              Privacy
+              Loham123@gmail.com
             </a>
             <a href="#" className="transition-colors hover:text-metallic-aluminum">
-              Terms
+              +91854625741
             </a>
           </div>
         </div>
@@ -54,7 +54,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-8 border-t border-border pt-8 text-center">
           <p className="font-body text-xs tracking-widest text-metallic-gunmetal">
-            © 2025 ATELIER NOIR. ALL RIGHTS RESERVED.
+            © 2025 LOHAM. ALL RIGHTS RESERVED.
           </p>
         </div>
       </div>
