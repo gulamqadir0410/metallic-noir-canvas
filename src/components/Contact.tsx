@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import lohamLogo from '@/assets/loham-logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,16 +65,11 @@ const Contact = () => {
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <div className="mb-16 text-center">
-          <h2 className="mb-6 font-display text-4xl font-bold text-primary md:text-6xl">
-            Connect with
+          <h2 className="mb-4 font-display text-5xl font-bold text-primary md:text-7xl">
+            Connect With LOHAM
           </h2>
-          <img 
-            src={lohamLogo} 
-            alt="Loham" 
-            className="mx-auto mb-6 w-full max-w-md animate-fade-in md:max-w-lg"
-          />
           <p className="font-body text-lg text-metallic-aluminum">
-            Let us craft something extraordinary together
+            Elevate your metal procurement experience.
           </p>
         </div>
 
