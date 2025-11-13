@@ -20,6 +20,7 @@ const Contact = () => {
   const { toast } = useToast();
 
   useEffect(() => {
+    // ... (GSAP logic remains the same)
     const form = formRef.current;
     if (!form) return;
 
@@ -41,9 +42,9 @@ const Contact = () => {
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
+    // ... (handleSubmit logic remains the same)
     e.preventDefault();
     
-    // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: 'Incomplete Form',
@@ -66,14 +67,21 @@ const Contact = () => {
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <div className="mb-16 text-center">
-          <h2 className="mb-6 font-display text-4xl font-bold text-primary md:text-6xl">
-            Connect with
-          </h2>
-          <img 
-            src={lohamLogo} 
-            alt="Loham" 
-            className="mx-auto mb-6 w-full max-w-md animate-fade-in md:max-w-lg"
-          />
+          
+          <div className="mb-6 flex items-center justify-center gap-4 md:gap-6">
+            <h2 className="font-display text-4xl font-bold text-primary md:text-6xl">
+              Connect with
+            </h2>
+            <img 
+              src={lohamLogo} 
+              alt="Loham" 
+              // ★★★ THIS IS THE CHANGE ★★★
+              // Changed h-10 to h-24 (6rem)
+              // Changed md:h-16 to md:h-36 (9rem)
+              className="h-24 w-auto animate-fade-in md:h-36"
+            />
+          </div>
+
           <p className="font-body text-lg text-metallic-aluminum">
             Let us craft something extraordinary together
           </p>
