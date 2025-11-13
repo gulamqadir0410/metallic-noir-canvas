@@ -10,6 +10,7 @@ const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const services = [
+    // ... (services array remains the same)
     {
       title: 'Our Edge',
       description:
@@ -37,6 +38,7 @@ const Services = () => {
   ];
 
   useEffect(() => {
+    // ... (GSAP logic remains the same)
     const section = sectionRef.current;
     if (!section) return;
 
@@ -64,7 +66,8 @@ const Services = () => {
     <section ref={sectionRef} className="relative h-screen overflow-hidden bg-void-black">
       {/* Background Images */}
       <div className="absolute inset-0">
-        {services.map((service, index) => (
+         {/* ... (image mapping remains the same) */}
+         {services.map((service, index) => (
           <div
             key={index}
             className="absolute inset-0 transition-opacity duration-1000"
@@ -81,14 +84,26 @@ const Services = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 md:px-12">
-        <div className="max-w-4xl text-center">
+      <div
+        className="relative z-10 flex h-full flex-col items-center justify-center px-6 md:px-12"
+      >
+        <div
+          // 1. Kept `max-w-6xl` to make it broad
+          className="max-w-6xl text-center"
+        >
+          
           {/* Service Title */}
-          <div className="mb-8 overflow-hidden">
+          <div
+            // 2. Kept `w-full`
+            className="relative w-full mb-8 min-h-[10rem] md:min-h-[12rem]"
+          >
             {services.map((service, index) => (
               <h2
                 key={index}
-                className="font-display text-6xl font-bold text-primary transition-all duration-700 md:text-8xl"
+                // ★★★ THIS IS THE FIX ★★★
+                // 1. Removed `h-full flex items-center justify-center`
+                // 2. Removed `md:text-8xl` (this makes "Our Edge" one line)
+                className="absolute left-0 top-0 w-full text-center font-display text-6xl font-bold text-primary transition-all duration-700"
                 style={{
                   transform: `translateY(${(activeIndex - index) * -100}%)`,
                   opacity: activeIndex === index ? 1 : 0,
@@ -100,7 +115,10 @@ const Services = () => {
           </div>
 
           {/* Service Description */}
-          <div className="relative mb-12 min-h-[8rem]">
+          <div
+            // 3. Kept `w-full` here to make it broad
+            className="relative w-full mb-12 min-h-[9rem]"
+          >
             {services.map((service, index) => (
               <p
                 key={index}
@@ -114,7 +132,8 @@ const Services = () => {
 
           {/* Progress Indicators */}
           <div className="flex justify-center gap-3">
-            {services.map((_, index) => (
+             {/* ... (This section is correct) ... */}
+             {services.map((_, index) => (
               <div
                 key={index}
                 className="h-1 w-16 overflow-hidden bg-muted"
