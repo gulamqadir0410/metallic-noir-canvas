@@ -1,4 +1,5 @@
-import { Instagram, Facebook, Twitter } from 'lucide-react';
+import { Instagram, Facebook, Twitter, Mail } from 'lucide-react';
+import lohamLogo from '@/assets/loham-logo.png';
 
 const Footer = () => {
   return (
@@ -7,9 +8,13 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
           {/* Brand */}
           <div>
-            <h3 className="font-display text-2xl font-bold text-primary">
-              ATELIER NOIR
-            </h3>
+            <img 
+              src={lohamLogo} 
+              alt="Loham" 
+              // ★★★ THIS IS THE CHANGE ★★★
+              // Changed h-8 to h-28 (which is 7rem)
+              className="h-28 w-auto" 
+            />
           </div>
 
           {/* Social Links */}
@@ -38,10 +43,24 @@ const Footer = () => {
               <Twitter className="h-5 w-5" />
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-gradient-metallic transition-all duration-300 group-hover:w-full" />
             </a>
+            <a
+              href="mailto:info@loham.com"
+              className="group relative text-metallic-aluminum transition-colors hover:text-metallic-chrome"
+              aria-label="Email"
+            >
+              <Mail className="h-5 w-5" />
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-gradient-metallic transition-all duration-300 group-hover:w-full" />
+            </a>
           </div>
 
-          {/* Legal */}
+          {/* Legal & Contact */}
           <div className="flex gap-8 font-body text-sm text-metallic-gunmetal">
+            <a 
+              href="tel:+1234567890"
+              className="transition-colors hover:text-metallic-aluminum"
+            >
+              +1 234 567 890
+            </a>
             <a href="#" className="transition-colors hover:text-metallic-aluminum">
               Privacy
             </a>
@@ -54,7 +73,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-8 border-t border-border pt-8 text-center">
           <p className="font-body text-xs tracking-widest text-metallic-gunmetal">
-            © 2025 ATELIER NOIR. ALL RIGHTS RESERVED.
+            © 2025 LOHAM. ALL RIGHTS RESERVED.
           </p>
         </div>
       </div>
