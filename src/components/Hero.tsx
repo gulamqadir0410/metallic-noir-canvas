@@ -36,6 +36,8 @@ const Hero = () => {
 
       // Pulse scroll indicator
       if (scrollIndicatorRef.current) {
+        // --- THIS LINE IS NOW FIXED ---
+        // The stray "_" before "gsap.to" has been removed.
         gsap.to(scrollIndicatorRef.current, {
           y: 10,
           opacity: 0.6,
@@ -63,7 +65,10 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+      {/* Remember to add padding here if the header is overlapping! 
+        e.g., pt-28, pt-40, etc.
+      */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center pt-28"> 
         <img
           ref={logoRef}
           src={lohamLogo}
