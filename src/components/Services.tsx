@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import serviceImage from '@/assets/service-bespoke.jpg';
+import serviceImage from '@/assets/service-bespoke.jpg'; // Make sure this path is correct
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,7 +10,6 @@ const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const services = [
-    // ... (services array remains the same)
     {
       title: 'Our Edge',
       description:
@@ -23,7 +22,7 @@ const Services = () => {
         'Backed by certified vendors and precision standards, Loham ensures unmatched quality in every metal, every order, every time.',
       image: serviceImage,
     },
-     {
+    {
       title: 'Innovation',
       description:
         'Leveraging technology and market insights, Loham continuously evolves to deliver smarter, faster, and more sustainable metal solutions.',
@@ -38,7 +37,6 @@ const Services = () => {
   ];
 
   useEffect(() => {
-    // ... (GSAP logic remains the same)
     const section = sectionRef.current;
     if (!section) return;
 
@@ -66,8 +64,7 @@ const Services = () => {
     <section ref={sectionRef} className="relative h-screen overflow-hidden bg-void-black">
       {/* Background Images */}
       <div className="absolute inset-0">
-         {/* ... (image mapping remains the same) */}
-         {services.map((service, index) => (
+        {services.map((service, index) => (
           <div
             key={index}
             className="absolute inset-0 transition-opacity duration-1000"
@@ -85,24 +82,20 @@ const Services = () => {
 
       {/* Content */}
       <div
-        className="relative z-10 flex h-full flex-col items-center justify-center px-6 md:px-12"
+        className="relative z-10 flex h-full flex-col items-center justify-center"
       >
         <div
-          // 1. Kept `max-w-6xl` to make it broad
-          className="max-w-6xl text-center"
+          // This main container stays wide (max-w-6xl)
+          className="max-w-6xl text-center px-6 md:px-12 w-full"
         >
           
           {/* Service Title */}
           <div
-            // 2. Kept `w-full`
             className="relative w-full mb-8 min-h-[10rem] md:min-h-[12rem]"
           >
             {services.map((service, index) => (
               <h2
                 key={index}
-                // ★★★ THIS IS THE FIX ★★★
-                // 1. Removed `h-full flex items-center justify-center`
-                // 2. Removed `md:text-8xl` (this makes "Our Edge" one line)
                 className="absolute left-0 top-0 w-full text-center font-display text-6xl font-bold text-primary transition-all duration-700"
                 style={{
                   transform: `translateY(${(activeIndex - index) * -100}%)`,
@@ -116,8 +109,9 @@ const Services = () => {
 
           {/* Service Description */}
           <div
-            // 3. Kept `w-full` here to make it broad
-            className="relative w-full mb-12 min-h-[9rem]"
+            // *** THIS IS THE FIX ***
+            // Updated to max-w-5xl for a much wider paragraph block.
+            className="relative w-full mb-12 min-h-[9rem] max-w-5xl mx-auto"
           >
             {services.map((service, index) => (
               <p
@@ -132,8 +126,7 @@ const Services = () => {
 
           {/* Progress Indicators */}
           <div className="flex justify-center gap-3">
-             {/* ... (This section is correct) ... */}
-             {services.map((_, index) => (
+            {services.map((_, index) => (
               <div
                 key={index}
                 className="h-1 w-16 overflow-hidden bg-muted"
