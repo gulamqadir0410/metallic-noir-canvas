@@ -10,6 +10,7 @@ const About = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // ... (GSAP code remains the same)
     const section = sectionRef.current;
     const scrollContainer = scrollContainerRef.current;
 
@@ -54,7 +55,13 @@ const About = () => {
   const stories = [
     {
       title: 'Heritage',
-      text: 'Decades of excellence from Bright Aluminium,("bright aluminium should be in red colour text") carrying forward trusted reliability and quality into a new multi-metal era.',
+      text: (
+        <>
+          Decades of excellence from{' '}
+          <span className="text-red-500">Bright Aluminium</span>, carrying
+          forward trusted reliability and quality into a new multi-metal era.
+        </>
+      ),
     },
     {
       title: 'Philosophy',
@@ -69,8 +76,15 @@ const About = () => {
   return (
     <section ref={sectionRef} className="relative h-screen overflow-hidden bg-deep-black">
       <div ref={scrollContainerRef} className="flex h-full" id="horizontal">
+        
         {/* Opening Scene */}
-        <div className="flex h-full min-w-screen items-center justify-center px-12 md:px-24">
+        <div
+          // CHANGE 1:
+          // Changed `items-center` to `items-start`
+          // Added `pt-40` to match the other blocks
+          // Added `story-block` class for GSAP fade-in
+          className="story-block flex h-full min-w-screen items-start justify-center px-12 pt-40 md:px-24"
+        >
           <div className="max-w-2xl">
             <h2 className="mb-8 font-display text-5xl font-bold text-primary md:text-7xl">
               The Story
@@ -95,7 +109,8 @@ const About = () => {
         {stories.map((story, index) => (
           <div
             key={index}
-            className="story-block flex h-full min-w-screen items-center justify-center px-12 md:px-24"
+            // (This block is already correct from last time)
+            className="story-block flex h-full min-w-screen items-start justify-center px-12 pt-40 md:px-24"
           >
             <div className="max-w-xl">
               <div className="mb-6 h-px w-24 bg-gradient-metallic" />
@@ -110,11 +125,19 @@ const About = () => {
         ))}
 
         {/* Closing */}
-        <div className="flex h-full min-w-screen items-center justify-center px-12">
+        <div
+          // CHANGE 2:
+          // Changed `items-center` to `items-start`
+          // Added `pt-40` to match
+          // Added `md:px-24` for consistent padding
+          // Added `story-block` class for GSAP fade-in
+          className="story-block flex h-full min-w-screen items-start justify-center px-12 pt-40 md:px-24"
+        >
           <p className="max-w-md text-center font-display text-2xl italic text-metallic-chrome md:text-3xl">
             "We don’t just trade metals; we forge relationships built on trust, transparency, and transformative innovation."
           </p>
         </div>
+
       </div>
     </section>
   );
