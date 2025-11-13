@@ -75,7 +75,6 @@ const Hero = () => {
           ref={subtitleRef}
           className="max-w-2xl font-body text-lg tracking-[0.2em] text-metallic-chrome md:text-xl"
         >
-          ARCHITECTURAL METALS SIMPLIFIED
         </p>
 
         {/* Scroll Indicator */}
