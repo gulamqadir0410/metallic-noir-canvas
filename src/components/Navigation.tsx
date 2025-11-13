@@ -1,20 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react'; // Removed useEffect
 import { NavLink } from './NavLink';
 import { Menu, X } from 'lucide-react';
-import lohamLogo from '@/assets/loham-logo.png';
+// import lohamLogo from '@/assets/loham-logo.png'; // Removed logo import
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false); // Removed scroll state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Removed the useEffect hook that listened for scroll events
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsScrolled(window.scrollY > 50);
+  //   };
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
   const navLinks = [
     { to: '/', label: 'HOME' },
@@ -23,13 +23,15 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-void-black/95 backdrop-blur-sm shadow-elegant' : 'bg-transparent'
-      }`}
+      // Removed 'fixed', 'left-0', 'right-0', 'top-0', 'z-50', and the conditional logic
+      // This nav will now be a static block at the top of the page
+      className="bg-void-black/95 backdrop-blur-sm shadow-elegant"
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-12">
-        {/* Logo */}
-        <NavLink
+      <div className="mx-auto flex max-w-7xl items-center justify-end px-6 py-6 md:px-12">
+        {/* ^-- Changed justify-between to justify-end to push links to the right */}
+
+        {/* Logo Block Removed */}
+        {/* <NavLink
           to="/"
           className="flex items-center"
         >
@@ -39,6 +41,7 @@ const Navigation = () => {
             className="h-12 w-auto md:h-16 transition-opacity hover:opacity-80"
           />
         </NavLink>
+        */}
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-8 md:flex">
