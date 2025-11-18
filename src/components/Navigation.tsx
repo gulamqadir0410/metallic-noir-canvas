@@ -8,6 +8,7 @@ const Navigation = () => {
   const navLinks = [
     { to: '/', label: 'HOME' },
     { to: '/services', label: 'SERVICES' },
+    { to: 'https://loham.app', label: 'SHOP' },
   ];
 
   return (
